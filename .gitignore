@@ -3,3 +3,13 @@
 /_site
 /src/packages
 /src/Releases
+**/bin/
+**/obj/
+*.user
+*.suo
+.vs/
+*.backup
+*.old
+**/TestResults/
+*.trx
+*.coverage

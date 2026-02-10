@@ -1,0 +1,45 @@
+name: .NET Build and Test
+
+on:
+  push:
+    branches: [ main, copilot/convert-to-dotnet-core ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+    
+    - name: Display .NET info
+      run: dotnet --info
+    
+    - name: Restore dependencies
+      run: dotnet restore src/OutlookGoogleCalendarSync.slnx
+      
+    - name: Build
+      run: dotnet build src/OutlookGoogleCalendarSync.slnx --no-restore --configuration Release
+      
+    - name: Test
+      run: dotnet test src/OutlookGoogleCalendarSync.slnx --no-build --configuration Release --verbosity normal
+      
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      if: success()
+      with:
+        name: build-artifacts
+        path: |
+          src/OutlookGoogleCalendarSync/bin/Release/net8.0-windows/
+        retention-days: 7

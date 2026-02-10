@@ -5,6 +5,18 @@
 
 <p align="center"><b>:rotating_light: Not using OGCS yet? Get started <a href="https://phw198.github.io/OutlookGoogleCalendarSync/">over on the user site</a>. :rotating_light:</b></p>
 
+## 🎉 Now Running on .NET 8!
+
+This project has been successfully migrated from .NET Framework 4.6.2 to **.NET 8 (LTS)**.
+
+**What this means:**
+- ✅ Better performance and lower memory usage
+- ✅ Modern C# features and improved developer experience
+- ✅ Long-term support until November 2026
+- ✅ Continued compatibility with all Outlook versions (2003-2024)
+
+**For developers:** See [MIGRATION_COMPLETED.md](docs/MIGRATION_COMPLETED.md) for build instructions and details.
+
 ### Continually Improving
 <img src="docs/images/development.png" v
  align="left" width="100px"/> 
