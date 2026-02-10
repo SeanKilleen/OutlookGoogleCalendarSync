@@ -77,37 +77,37 @@
   <!-- NuGet Package References -->
   <ItemGroup>
     <!-- Google API Packages -->
-    <PackageReference Include="Google.Api.CommonProtos" Version="2.16.0" />
-    <PackageReference Include="Google.Api.Gax" Version="4.9.0" />
-    <PackageReference Include="Google.Api.Gax.Grpc" Version="4.9.0" />
-    <PackageReference Include="Google.Apis" Version="1.68.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.68.0" />
-    <PackageReference Include="Google.Apis.Calendar.v3" Version="1.68.0.3536" />
-    <PackageReference Include="Google.Apis.Core" Version="1.68.0" />
-    <PackageReference Include="Google.Cloud.DevTools.Common" Version="3.2.0" />
+    <PackageReference Include="Google.Api.CommonProtos" Version="2.17.0" />
+    <PackageReference Include="Google.Api.Gax" Version="4.13.0" />
+    <PackageReference Include="Google.Api.Gax.Grpc" Version="4.13.0" />
+    <PackageReference Include="Google.Apis" Version="1.73.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.73.0" />
+    <PackageReference Include="Google.Apis.Calendar.v3" Version="1.73.0.3993" />
+    <PackageReference Include="Google.Apis.Core" Version="1.73.0" />
+    <PackageReference Include="Google.Cloud.DevTools.Common" Version="3.3.0" />
     <PackageReference Include="Google.Cloud.Logging.Log4Net" Version="4.4.0" />
-    <PackageReference Include="Google.Cloud.Logging.Type" Version="4.2.0" />
-    <PackageReference Include="Google.Cloud.Logging.V2" Version="4.4.0" />
-    <PackageReference Include="Google.LongRunning" Version="3.2.0" />
-    <PackageReference Include="Google.Protobuf" Version="3.28.2" />
+    <PackageReference Include="Google.Cloud.Logging.Type" Version="4.3.0" />
+    <PackageReference Include="Google.Cloud.Logging.V2" Version="4.5.0" />
+    <PackageReference Include="Google.LongRunning" Version="3.5.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.33.5" />
     
     <!-- gRPC Packages -->
-    <PackageReference Include="Grpc.Auth" Version="2.66.0" />
+    <PackageReference Include="Grpc.Auth" Version="2.76.0" />
     <PackageReference Include="Grpc.Core" Version="2.46.6" />
-    <PackageReference Include="Grpc.Core.Api" Version="2.66.0" />
-    <PackageReference Include="Grpc.Net.Client" Version="2.66.0" />
-    <PackageReference Include="Grpc.Net.Common" Version="2.66.0" />
+    <PackageReference Include="Grpc.Core.Api" Version="2.76.0" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.76.0" />
+    <PackageReference Include="Grpc.Net.Common" Version="2.76.0" />
     
     <!-- Common Packages -->
-    <PackageReference Include="log4net" Version="3.0.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="NodaTime" Version="3.1.12" />
-    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="8.0.2" />
+    <PackageReference Include="log4net" Version="3.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="NodaTime" Version="3.3.0" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="10.0.2" />
     
     <!-- Microsoft Extensions -->
-    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.2" />
   </ItemGroup>
 
   <!-- Local DLL References (Squirrel-related - to be replaced later) -->
