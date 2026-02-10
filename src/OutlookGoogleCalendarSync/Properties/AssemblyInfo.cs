@@ -27,7 +27,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can use the default the Revision and 
 // Build Numbers by using the '*' as shown below:
-[assembly: AssemblyVersion("2.12.*")]
+// Note: Wildcards are not compatible with deterministic builds in .NET 8
+[assembly: AssemblyVersion("2.12.0.0")]
 [assembly: AssemblyFileVersion("2.12.0.0")]
 
 [assembly: AssemblyMetadata("SquirrelAwareVersion", "1")]
