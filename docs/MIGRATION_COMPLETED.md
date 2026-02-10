@@ -34,19 +34,25 @@ All NuGet packages updated to latest .NET 8 compatible versions:
 ### Prerequisites
 - .NET 8 SDK or later
 - Windows OS (required for COM Interop and Windows Forms)
-- Visual Studio 2022 or later (optional, for designer support)
+- Visual Studio 2022 or MSBuild (required for COM reference resolution)
 
 ### Build Commands
+
+**Important:** Due to COM Interop requirements, you must use MSBuild (not `dotnet build`).
 
 **Restore dependencies:**
 ```bash
 dotnet restore src/OutlookGoogleCalendarSync.slnx
 ```
 
-**Build:**
+**Build with MSBuild:**
 ```bash
-dotnet build src/OutlookGoogleCalendarSync.slnx --configuration Release
+# Using MSBuild (required for COM references)
+msbuild src/OutlookGoogleCalendarSync.slnx -p:Configuration=Release -p:Platform="Any CPU"
 ```
+
+**Alternative - Build with Visual Studio:**
+Open `src/OutlookGoogleCalendarSync.slnx` in Visual Studio 2022 and build normally.
 
 **Run tests:**
 ```bash
@@ -111,13 +117,14 @@ Current status: Still using Squirrel DLLs from lib/ folder
    - Automatic assembly info generation disabled (preserves existing AssemblyInfo.cs)
 
 2. **Build System**
-   - Use `dotnet` CLI instead of MSBuild directly
-   - Faster restore and build times
-   - Better NuGet integration
+   - **Must use MSBuild** (not `dotnet build`) due to COM Interop
+   - `dotnet build` uses .NET Core MSBuild which doesn't support COM references
+   - Use `msbuild` directly or build through Visual Studio
+   - Faster restore with `dotnet restore`
 
 3. **IDE Support**
    - Requires Visual Studio 2022+ for full designer support
-   - VS Code works with C# extension
+   - VS Code works with C# extension (but cannot build without MSBuild)
    - Rider 2022.3+ fully supported
 
 ### For Users
@@ -126,10 +133,18 @@ No breaking changes! The application functionality remains identical.
 
 ## Known Issues
 
-### COM Interop on Non-Windows
-Cannot build on Linux/macOS due to COM references. This is expected and by design.
+### MSB4803: COM Interop Requires Full MSBuild
+Cannot use `dotnet build` due to COM references requiring full MSBuild.
 
 **Error:** `The task "ResolveComReference" is not supported on the .NET Core version of MSBuild`
+
+**Solution:** 
+- Use `msbuild` directly instead of `dotnet build`
+- Or build through Visual Studio
+- CI/CD uses `setup-msbuild` action to configure MSBuild
+
+### COM Interop on Non-Windows
+Cannot build on Linux/macOS due to COM references. This is expected and by design.
 
 **Solution:** Build on Windows, or use CI/CD (which runs on Windows runners)
 
