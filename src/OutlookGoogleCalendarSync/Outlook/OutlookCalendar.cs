@@ -1176,9 +1176,12 @@ namespace OutlookGoogleCalendarSync.Outlook {
             if (System.Diagnostics.Process.GetProcessesByName("OUTLOOK").Count() > 0) {
                 log.Info("Attaching to the already running Outlook process.");
                 try {
-                    oApp = System.Runtime.InteropServices.Marshal.GetActiveObject("Outlook.Application") as Microsoft.Office.Interop.Outlook.Application;
+                    // In .NET 8, Marshal.GetActiveObject is not available
+                    // Use Type.GetTypeFromProgID and Activator.CreateInstance instead
+                    Type outlookType = Type.GetTypeFromProgID("Outlook.Application");
+                    oApp = Activator.CreateInstance(outlookType) as Microsoft.Office.Interop.Outlook.Application;
                     if (oApp == null)
-                        throw new ApplicationException("GetActiveObject() returned NULL without throwing an error.");
+                        throw new ApplicationException("CreateInstance() returned NULL without throwing an error.");
                 } catch (System.Exception ex) {
                     if (Outlook.Errors.HandleComError(ex) == Outlook.Errors.ErrorType.Unavailable) { //MK_E_UNAVAILABLE
                         log.Warn("Attachment failed - Outlook is running without GUI for programmatic access.");

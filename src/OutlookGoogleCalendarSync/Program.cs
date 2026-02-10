@@ -645,7 +645,10 @@ namespace OutlookGoogleCalendarSync {
         public static Boolean CalledByProcess(String callingProcessNames) {
             String[] processNames = callingProcessNames.Split(',');
             System.Diagnostics.StackTrace stackTrace = new System.Diagnostics.StackTrace();
-            foreach (System.Diagnostics.StackFrame frame in stackTrace.GetFrames().Reverse()) {
+            System.Diagnostics.StackFrame[] frames = stackTrace.GetFrames();
+            if (frames == null) return false;
+            
+            foreach (System.Diagnostics.StackFrame frame in frames.Reverse()) {
                 if (processNames.Contains(frame.GetMethod().Name, StringComparer.OrdinalIgnoreCase)) {
                     return true;
                 }
@@ -656,8 +659,11 @@ namespace OutlookGoogleCalendarSync {
         public static void StackTraceToString() {
             try {
                 String stackString = "";
-                List<System.Diagnostics.StackFrame> stackFrames = new System.Diagnostics.StackTrace().GetFrames().ToList();
-                stackFrames.ForEach(sf => stackString += sf.GetMethod().Name + " < ");
+                System.Diagnostics.StackFrame[] frames = new System.Diagnostics.StackTrace().GetFrames();
+                if (frames != null) {
+                    List<System.Diagnostics.StackFrame> stackFrames = frames.ToList();
+                    stackFrames.ForEach(sf => stackString += sf.GetMethod().Name + " < ");
+                }
                 log.Warn("StackTrace path: " + stackString);
             } catch (System.Exception ex) {
                 Ogcs.Exception.Analyse(ex);
