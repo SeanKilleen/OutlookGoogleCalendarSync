@@ -23,22 +23,14 @@ jobs:
       with:
         dotnet-version: '8.0.x'
     
-    - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v2
-      with:
-        msbuild-architecture: x64
-    
     - name: Display .NET info
       run: dotnet --info
-    
-    - name: Display MSBuild info
-      run: msbuild -version
     
     - name: Restore dependencies
       run: dotnet restore src/OutlookGoogleCalendarSync.slnx
       
     - name: Build
-      run: msbuild src/OutlookGoogleCalendarSync.slnx -p:Configuration=Release -p:Platform="Any CPU" -restore:false
+      run: dotnet build src/OutlookGoogleCalendarSync.slnx --no-restore --configuration Release
       
     - name: Test
       run: dotnet test src/OutlookGoogleCalendarSync.slnx --no-build --configuration Release --verbosity normal
