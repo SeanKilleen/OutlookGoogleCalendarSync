@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="OutlookGoogleCalendarSync.Tests/OutlookGoogleCalendarSync.Tests.csproj" />
+  <Project Path="OutlookGoogleCalendarSync/OutlookGoogleCalendarSync.csproj" />
+</Solution>
